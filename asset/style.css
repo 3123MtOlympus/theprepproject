@@ -7,78 +7,148 @@ body {
     font-family: 'Bebas Neue', sans-serif;
     font-family: 'Merriweather Sans', sans-serif;
     font-family: 'Oxygen', sans-serif;
+    background-color: green;
 }
+/* Phone Screen Section */
 
-
-h1,
-h4{
-    text-shadow: 1px 2px 3px white;
-    text-align: center;
-    margin: 25px;
-}
-
-
-.entry-container {
+#phone-screen {
     background-color: rgb(25, 25, 25);
-    display: flex;
+    display: block;
+    align-items: center;
     margin: 0 auto;
     border: 3px solid rgb(21, 21, 21);
     padding: 10px;
     border-radius: 15px;
     box-shadow: inset 1px 1px 3px rgb(255, 254, 254), 3px 3px rgb(36, 36, 36);
     width: 371.5px;
-    height: 646.7px;
+    height: 656.7px;
 }
 
-.food-entry{
+.camera-frame {
+    display: block;
+    margin: 0 auto;
+    align-items: center;
+    border: 3px solid black;
+    width: 40%;
+    height: 5%;
+    box-shadow: 1px 1px white;
+    border-radius: 1px 1px 20px 20px;
+    margin-top: 0;
+}
+
+#camera-lens {
+    border: 2px double grey;
+    border-radius: 100px;
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    margin-top: 5px;
+    background-color: rgba(0, 136, 255, 0.252);
+}
+
+h1,
+h4 {
+    text-shadow: 1px 2px 3px white;
+    text-align: center;
+    margin: 25px;
+}
+
+#food-container {
+    margin: 0 auto;
+    margin: 15px;
+}
+
+
+dt,
+dd {
+    background-color: white;
+    border-radius: 3px;
+    width: 98%;
+    margin: 3px;
+    padding-left: 3px;
+    text-align: center;
+}
+
+#list-input-items {
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    margin: 15px;
+}
+
+#form-title {
+    font-weight: 400;
+    text-align: center;
+    color: antiquewhite;
+    text-shadow: 1px 1px 5px rgb(146, 139, 139);
+}
+
+#food-entry {
     display: inline;
     justify-content: space-between;
-    width: 350px;
-    height:40px;
-    margin: 0px;
+    width: 320px;
+    height: 40px;
+    margin: 3px;
     padding: 5px;
     border: 2px solid orange;
     border-radius: 5px;
     box-shadow: 2px 3px 3px yellow;
 }
 
-.food-entry-date{
+#food-entry-date {
     display: inline;
     justify-content: space-between;
-    width: 350px;
-    height:40px;
-    margin: 0px;
+    width: 320px;
+    height: 40px;
+    margin: 3px;
     padding: 5px;
     border: 2px solid orange;
     border-radius: 5px;
     box-shadow: 2px 3px 3px yellow;
 }
 
-.food-entry-btn{
+#food-entry-btn {
+    cursor: point;
     padding: 9px;
     border-radius: 10px;
     background-color: blue;
+    width: 80%;
     height: 50px;
     color: white;
     box-shadow: 1px 2px white;
     margin-left: 30px;
+    margin-top: 10px;
+
 }
 
-.food-entry-btn:hover{
-    cursor: pointer;
-}
-
-.food-entry-btn:active{
-    background-color: red;
+#food-entry-btn:active {
+    background-color: darkblue;
     box-shadow: 1px 2px rgb(31, 30, 30);
 }
 
+#lets-cook-btn{
+    cursor: pointer;
+    align-items: center;
+    padding: 9px;
+    border-radius: 10px;
+    background-color: rgb(102, 206, 102);
+    width: 60%;
+    height: 50px;
+    color: white;
+    box-shadow: 1px 2px white;
+    margin-left: 65px;
+    margin-top: 10px;
+  
+}
 
-.recipe{
+#lets-cook-btn:active{
     background-color: darkgreen;
+    box-shadow: 1px 2px rgb(31, 30, 30);
+}
+/* Recipe Section */
+
+.recipe {
     width: 50%;
     height: 50%;
     border: 2px solid green;
     border-radius: 5px;
-    
 }

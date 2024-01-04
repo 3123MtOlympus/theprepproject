@@ -56,38 +56,92 @@
         <h1>The Prep</h1>
         <h4>SEAL YOUR MEAL BEFORE THE SPILL</h4>
     </header>
-    
-    <!-- Food Entry Section -->
-    <main>
-        <section class="phone-screen">
-            <form class="entry-container">
-                <input class="food-entry" placeholder="Enter Item">
-                <input class="food-entry-date" type="date">
-                <button class="food-entry-btn"><b>Submit</b></button>
-            </form>
 
-        </section>
 
-        <!-- Recipe Section-->
-        <section class="recipe-container">
-            <div class="Recipe">
-                <div class="container text-center">
-                    <div class="row align-items-start">
-                        <div class="col">
-                            One of three columns
-                        </div>
-                        <div class="col">
-                            One of three columns
-                        </div>
-                        <div class="col">
-                            One of three columns
-                        </div>
-                    </div>
-                </div>
+    <main class="phone-screen">
+        <section id="phone-screen">
+            <div class="camera-frame">
+                <div id="camera-lens"></div>
+            </div>
+
+            <!-- Create JS for items to appear-->
+            <div id="list-input-items">
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+                <dt>
+                <dd>Food Item <em>Expiration Date</em></dd>
+                </dt>
+            </div>
+
+            
+            <!-- Food Entry Section -->
+            <div id="food-container">
+                <h2 id="form-title">
+                    <hr>Submit Food Here
+                </h2>
+                <form id="entry-container">
+                    <input id="food-entry" placeholder="Enter Item">
+                    <input id="food-entry-date" type="date">
+                    <button id="food-entry-btn"><b>Submit</b></button>
+                    <button id="lets-cook-btn"><b>LET'S COOK</b></button>
+                </form>
             </div>
         </section>
     </main>
 
+    <!-- Recipe Section-->
+    <section class="recipe-container">
+        <div class="Recipe">
+            <h2 id="recipe-title">Great Recipe Recommendations</h2>
+            <div class="container text-center">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <p>FOOD TITLE</p>
+                        <em>est Cook time</em> | <em>est prep time</em>
+                    </div>
+                    <div class="col">
+                        <p>FOOD TITLE</p>
+                        <em>est Cook time</em> | <em>est prep time</em>
+                    </div>
+                    <div class="col">
+                        <p>FOOD TITLE</p>
+                        <em>est Cook time</em> | <em>est prep time</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
