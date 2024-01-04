@@ -54,8 +54,11 @@ const settings = {
 };
 
 $.ajax(settings).done(function (response) {
-	console.log(response.recipe.data[0].id);
-  recipeDetails(response.recipe.data[0].id);
+  console.log(response.recipe.data.length)
+  var randomIndex = Math.floor(response.recipe.data.length * Math.random());
+  console.log(randomIndex)
+	console.log(response.recipe.data[randomIndex].id);
+  recipeDetails(response.recipe.data[randomIndex].id);
 });
 
 function recipeDetails(id) {
