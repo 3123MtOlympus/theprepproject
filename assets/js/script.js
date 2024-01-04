@@ -4,6 +4,10 @@ var lastNameEl = $('input[name="last-name"]');
 var emailEl = $('input[name="email"]');
 var githubEl = $('input[name="github"]');
 
+var FNB = $('#fetch-nutrition-button');
+var uniqueEl = $('#unique');
+console.log(uniqueEl);
+console.log(FNB);
 function handleFormSubmit(event) {
   // Prevent the default behavior
   event.preventDefault();
@@ -31,3 +35,34 @@ function handleFormSubmit(event) {
 
 // Submit event on the form
 formEl.on('submit', handleFormSubmit);
+
+function IngredientParser(ingredients){
+  console.log(ingredients);
+  //console.log each ingredients as a string
+}
+
+async function getNutritionAPI() {
+   var foodItem = firstNameEl.val();
+  const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=' + foodItem;
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '8362023de3msh764288503d79e22p14e4a6jsn3b9cda46e2b0',
+      'X-RapidAPI-Host': 'nutrition-by-api-ninjas.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    myIngredients(result);
+  } catch (error) {
+    console.error(error);
+  }
+
+}
+
+FNB.on('click', getNutritionAPI);
+
+
+
