@@ -31,3 +31,45 @@ function handleFormSubmit(event) {
 
 // Submit event on the form
 formEl.on('submit', handleFormSubmit);
+
+
+var inclIngredients = ["chicken", "salt"];
+var inclIngredientsQuery = inclIngredients.join(", ");
+
+console.log(inclIngredientsQuery)
+
+
+const settings = {
+	async: true,
+	crossDomain: true,
+	url: 'https://all-in-one-recipe-api.p.rapidapi.com/search',
+	method: 'POST',
+	headers: {
+		'content-type': 'application/json',
+		'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
+		'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
+	},
+	processData: false,
+	data: '{\r\n    "ingredients": "' + inclIngredientsQuery + '"\r\n}'
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response.recipe.data.id);
+});
+
+// function recipeDetails(id) {
+//   const settings = {
+//     async: true,
+//     crossDomain: true,
+//     url: 'https://all-in-one-recipe-api.p.rapidapi.com/details/' + id,
+//     method: 'GET',
+//     headers: {
+//       'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
+//       'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
+//     }
+//   };
+  
+//   $.ajax(settings).done(function (response) {
+//     console.log(response);
+//   });
+// }
