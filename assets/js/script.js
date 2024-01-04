@@ -54,22 +54,30 @@ const settings = {
 };
 
 $.ajax(settings).done(function (response) {
-	console.log(response.recipe.data.id);
+	console.log(response.recipe.data[0].id);
+  recipeDetails(response.recipe.data[0].id);
 });
 
-// function recipeDetails(id) {
-//   const settings = {
-//     async: true,
-//     crossDomain: true,
-//     url: 'https://all-in-one-recipe-api.p.rapidapi.com/details/' + id,
-//     method: 'GET',
-//     headers: {
-//       'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
-//       'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
-//     }
-//   };
+function recipeDetails(id) {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: 'https://all-in-one-recipe-api.p.rapidapi.com/details/' + id,
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
+      'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
+    }
+  };
   
-//   $.ajax(settings).done(function (response) {
-//     console.log(response);
-//   });
-// }
+  $.ajax(settings).done(function (response) {
+    console.log(response.recipe.data.Name);
+    console.log(response.recipe.data.Description);
+    console.log(response.recipe.data.Directions);
+    console.log(response.recipe.data.Ingredients);
+    console.log(response.recipe.data.Time);
+
+
+
+  });
+}
