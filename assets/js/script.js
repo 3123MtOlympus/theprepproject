@@ -43,7 +43,7 @@ function IngredientParser(ingredients){
 
 async function getNutritionAPI() {
    var foodItem = firstNameEl.val();
-  const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=' + foodItem;
+  const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=' + ingredients;
   const options = {
     method: 'GET',
     headers: {
