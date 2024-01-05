@@ -3,8 +3,11 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>jQuery Pizza</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <title>ThePrepProject</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./assets/css/jass.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
@@ -12,77 +15,131 @@
 <body>
   <div class="bg-dark min-100-vh flex-row align-center justify-center">
     <div class="col-11 col-sm-8">
-      <h1 class="text-light">Free Pizza Raffle Sign Up!</h1>
+      <h1 class="text">Let's Find A Recipe</h1>
 
-      <div class="card rounded bg-light p-3">
-        <div class="card-body">
-          <form id="pizza-form">
-            <div class="row">
-              <div class="col-12 col-sm-6">
-                <label for="first-name">First Name</label>
-                <input type="text" class="form-input" name="first-name" placeholder="Enter first name" />
-              </div>
-              <div class="col-12 col-sm-6">
-                <label for="last-name">Last Name</label>
-                <input type="text" class="form-input" name="last-name" placeholder="Enter last name" />
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col-12 col-sm-6">
-                <label for="email">Email</label>
-                <input type="email" class="form-input" name="email" placeholder="Enter email" />
-              </div>
-              <div class="col-12 col-sm-6">
-                <label for="github">GitHub</label>
-                <input type="text" class="form-input" name="github" placeholder="Enter GitHub" />
-              </div>
-            </div>
-            <fieldset class="group">
-              <legend>Select standard pizza toppings</legend>
+      <main id="container">
+
+        <!-- Protein Section -->
+        <div>
+          <form class="group-protein">
+            <fieldset>
+              <legend>Choose Your Protein</legend>
+              <p>What are proteins?<br>
+                Protein is an important part of a healthy diet.
+                Proteins are made up of chemical 'building blocks' called amino acids.
+                Your body uses amino acids to build and repair muscles and bones and to make hormones and enzymes. They
+                can also be used as an energy source.
+              </p>
+
+              <hr id="top">
+
               <ul class="checkbox">
                 <li>
-                  <input type="checkbox" id="cb1" value="pepperoni" />
-                  <label for="cb1">Pepperoni</label>
+                  <input type="checkbox" id="cb1" value="Chicken Breast" />
+                  <label class="title" for="cb1">Chicken Breast</label>
                 </li>
                 <li>
-                  <input type="checkbox" id="cb2" value="sausage" />
-                  <label for="cb2">Sausage</label>
+                  <input type="checkbox" id="cb2" value="Salmon" />
+                  <label class="title" for="cb2">Salmon</label>
                 </li>
                 <li>
-                  <input type="checkbox" id="cb3" value="mushrooms" />
-                  <label for="cb3">Mushrooms</label>
+                  <input type="checkbox" id="cb3" value="Steak" />
+                  <label class="title" for="cb3">Steak</label>
                 </li>
-                <li>
-                  <input type="checkbox" id="cb4" value="onions" />
-                  <label for="cb4">Onions</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb5" value="green peppers" />
-                  <label for="cb5">Green Peppers</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb6" value="extra cheese" />
-                  <label for="cb6">Extra Cheese</label>
-                </li>
-              </ul>
             </fieldset>
-            <button class="btn btn-block btn-danger">Submit Form</button>
+          </form>
+        </div>
+
+        <hr id="bottom">
+
+        <!-- Carbs Section -->
+        <div>
+          <form>
+            <fieldset class="group-carbs">
+              <legend>Choose Your Carbs</legend>
+              <p>What are carbohydrates?<br>
+                Carbohydrates, or carbs, are sugar molecules. Along with proteins and fats, carbohydrates are one of
+                three main nutrients found in foods and drinks.
+
+                Your body breaks down carbohydrates into glucose. Glucose, or blood sugar, is the main source of energy
+                for your body's cells, tissues, and organs. Glucose can be used immediately or stored in the liver and
+                muscles for later use.</p>
+
+              <hr id="top">
+
+
+              <ul class="checkbox">
+                <li>
+                  <input type="checkbox" id="cb4" value="Sweet Potatoes" />
+                  <label class="title" for="cb4">Sweet Potatoes</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb5" value="Fruits" />
+                  <label class="title" for="cb5">Fruits</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb6" value="Potatoes" />
+                  <label class="title" for="cb6">Potatoes</label>
+                </li>
+            </fieldset>
+
             
           </form>
-          <button id="fetch-nutrition-button">Click Me</button>
-<div id="unique">   
 
-</div>
+          <div id="unique">
+
+          </div>
+
         </div>
-      </div>
+
+        <hr id="bottom">
+
+        <!-- Fats Section -->
+        <div>
+          <form>
+            <fieldset class="group-carbs">
+              <legend>Choose Your Fats</legend>
+              <p>
+                There are four major dietary fats in food:<br>
+                Saturated fats.<br>
+                Transfats.<br>
+                Monounsaturated fats.<br>
+                Polyunsaturated fats.</p>
+
+              <hr id="top">
+
+              <ul class="checkbox">
+                <li>
+                  <input type="checkbox" id="cb7" value="Avocadoes" />
+                  <label class="title" for="cb7">Avocadoes</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb8" value="Olive Oil" />
+                  <label class="title" for="cb8">Olive Oil</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="cb9" value="Nuts" />
+                  <label class="title" for="cb9">Nuts</label>
+                </li>
+            </fieldset>
+            <button id="submit-protein" class="btn btn-block btn-danger">Submit Form</button>
+
+          </form>
+        </div>
+
     </div>
   </div>
+
+  </main>
+
+
 
 
   <!-- Added link to the jQuery library -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
   <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
 

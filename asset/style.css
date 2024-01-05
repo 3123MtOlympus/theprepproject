@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-family: 'Oxygen', sans-serif;
+}
+
+
+h1,
+h4{
+    text-shadow: 1px 2px 3px white;
+    text-align: center;
+    margin: 25px;
+}
+
+
+.entry-container {
+    background-color: rgb(25, 25, 25);
+    display: flex;
+    margin: 0 auto;
+    border: 3px solid rgb(21, 21, 21);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: inset 1px 1px 3px rgb(255, 254, 254), 3px 3px rgb(36, 36, 36);
+    width: 371.5px;
+    height: 646.7px;
+}
+
+.food-entry{
+    display: inline;
+    justify-content: space-between;
+    width: 350px;
+    height:40px;
+    margin: 0px;
+    padding: 5px;
+    border: 2px solid orange;
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px yellow;
+}
+
+.food-entry-date{
+    display: inline;
+    justify-content: space-between;
+    width: 350px;
+    height:40px;
+    margin: 0px;
+    padding: 5px;
+    border: 2px solid orange;
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px yellow;
+}
+
+.food-entry-btn{
+    padding: 9px;
+    border-radius: 10px;
+    background-color: blue;
+    height: 50px;
+    color: white;
+    box-shadow: 1px 2px white;
+    margin-left: 30px;
+}
+
+.food-entry-btn:hover{
+    cursor: pointer;
+}
+
+.food-entry-btn:active{
+    background-color: red;
+    box-shadow: 1px 2px rgb(31, 30, 30);
+}
+
+
+.recipe{
+    background-color: darkgreen;
+    width: 50%;
+    height: 50%;
+    border: 2px solid green;
+    border-radius: 5px;
+    
+}

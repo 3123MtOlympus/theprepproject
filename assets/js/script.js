@@ -1,8 +1,9 @@
-var formEl = $('#pizza-form');
-var firstNameEl = $('input[name="first-name"]');
-var lastNameEl = $('input[name="last-name"]');
-var emailEl = $('input[name="email"]');
-var githubEl = $('input[name="github"]');
+var proteinFormEl = $('.group-protein');
+var carbsFormEl = $('.group-carbs');
+var fatsFormEl = $('.group-fats');
+
+let proteinSubmit = $('#submit-protein');
+
 
 var FNB = $('#fetch-nutrition-button');
 
@@ -13,37 +14,38 @@ function handleFormSubmit(event) {
   // Prevent the default behavior
   event.preventDefault();
 
-  console.log('First Name:', firstNameEl.val());
-  console.log('Last Name:', lastNameEl.val());
-  console.log('Email:', emailEl.val());
-  console.log('GitHub:', githubEl.val());
+  // Protein Section 
+  var protein = [];
 
   // Select all checked options
   var checkedEl = $('input:checked');
-  var selected = [];
+
+  console.log(checkedEl);
+
 
   // Loop through checked options to store in array
   $.each(checkedEl, function () {
-    selected.push($(this).val());
+    protein.push($(this).val());
   });
-  console.log('Toppings: ', selected.join(', '));
 
-  // Clear input fields
-  $('input[type="text"]').val('');
-  $('input[type="email"]').val('');
-  $('input[type="checkbox"]').prop('checked', false);
+  console.log(protein);
+
+  //API call
+  searchByIngredient(protein);
 }
 
 // Submit event on the form
-formEl.on('submit', handleFormSubmit);
+proteinSubmit.on('click', handleFormSubmit);
 
-function IngredientParser(ingredients){
+function IngredientParser(ingredients) {
   console.log(ingredients);
   //console.log each ingredients as a string
 }
 
+
 async function getNutritionAPI(ingredient) {
   const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=' + ingredient;
+
   const options = {
     method: 'GET',
     headers: {
@@ -85,34 +87,38 @@ function ParseRecipeDetailsIngredients(ingredients) {
 
 
 
-var inclIngredients = ["chicken", "salt"];
-var inclIngredientsQuery = inclIngredients.join(", ");
-
-console.log(inclIngredientsQuery)
+// var inclIngredients = ["chicken", "salt"];
 
 
-const settings = {
-	async: true,
-	crossDomain: true,
-	url: 'https://all-in-one-recipe-api.p.rapidapi.com/search',
-	method: 'POST',
-	headers: {
-		'content-type': 'application/json',
-		'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
-		'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
-	},
-	processData: false,
-	data: '{\r\n    "ingredients": "' + inclIngredientsQuery + '"\r\n}'
+
+function searchByIngredient(ingredients) {
+
+
+  var inclIngredientsQuery = ingredients.join(", ");
+
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: 'https://all-in-one-recipe-api.p.rapidapi.com/search',
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
+      'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
+    },
+    processData: false,
+    data: '{\r\n    "ingredients": "' + inclIngredientsQuery + '"\r\n}'
+  };
+
+  $.ajax(settings).done(function (response) {
+    console.log(response.recipe.data.length)
+    var randomIndex = Math.floor(response.recipe.data.length * Math.random());
+    console.log(randomIndex)
+    console.log(response.recipe.data[randomIndex].id);
+    recipeDetails(response.recipe.data[randomIndex].id);
+  });
 };
 
-$.ajax(settings).done(function (response) {
-  console.log(response.recipe.data.length)
-  var randomIndex = Math.floor(response.recipe.data.length * Math.random());
-  console.log(randomIndex)
-	console.log(response.recipe.data[randomIndex].id);
-  // console.log(response.recipe.data.ingredients)
-  recipeDetails(response.recipe.data[randomIndex].id);
-});
 
 function recipeDetails(id) {
   const settings = {
@@ -125,7 +131,7 @@ function recipeDetails(id) {
       'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
     }
   };
-  
+
   $.ajax(settings).done(function (response) {
     // ParseRecipeDetailsIngredients(response.recipe.data.Ingredients);
     console.log(response.recipe.data.Name);
@@ -137,4 +143,4 @@ function recipeDetails(id) {
 
 
   });
-}
+};
