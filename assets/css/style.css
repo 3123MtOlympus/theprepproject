@@ -23,3 +23,11 @@ li {
   margin-top: 1.25rem;
   padding: 0.125rem;
 }
+
+.title{
+  color: aliceblue;
+}
+
+legend{
+  color: aliceblue;
+}

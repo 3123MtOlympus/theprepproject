@@ -1,8 +1,9 @@
-var formEl = $('#pizza-form');
-var firstNameEl = $('input[name="first-name"]');
-var lastNameEl = $('input[name="last-name"]');
-var emailEl = $('input[name="email"]');
-var githubEl = $('input[name="github"]');
+var proteinFormEl = $('.group-protein');
+var carbsFormEl = $('.group-carbs');
+var fatsFormEl = $('.group-fats');
+
+let proteinSubmit = $('#submit-protein');
+
 
 var FNB = $('#fetch-nutrition-button');
 var uniqueEl = $('#unique');
@@ -12,29 +13,28 @@ function handleFormSubmit(event) {
   // Prevent the default behavior
   event.preventDefault();
 
-  console.log('First Name:', firstNameEl.val());
-  console.log('Last Name:', lastNameEl.val());
-  console.log('Email:', emailEl.val());
-  console.log('GitHub:', githubEl.val());
+// Protein Section 
+var protein = [];
 
   // Select all checked options
   var checkedEl = $('input:checked');
-  var selected = [];
+
+  console.log(checkedEl);
+
 
   // Loop through checked options to store in array
   $.each(checkedEl, function () {
-    selected.push($(this).val());
+    protein.push($(this).val());
   });
-  console.log('Toppings: ', selected.join(', '));
 
-  // Clear input fields
-  $('input[type="text"]').val('');
-  $('input[type="email"]').val('');
-  $('input[type="checkbox"]').prop('checked', false);
+  console.log(protein);
+
+//API call
+
 }
 
 // Submit event on the form
-formEl.on('submit', handleFormSubmit);
+proteinSubmit.on('click', handleFormSubmit);
 
 function IngredientParser(ingredients){
   console.log(ingredients);
