@@ -42,7 +42,7 @@ function IngredientParser(ingredients){
 }
 
 async function getNutritionAPI() {
-   var foodItem = firstNameEl.val();
+   var ingredients = "4  skinless, boneless chicken breasts";
   const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=' + ingredients;
   const options = {
     method: 'GET',
@@ -55,7 +55,8 @@ async function getNutritionAPI() {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    myIngredients(result);
+    // console.log(result);
+    IngredientParser(result);
   } catch (error) {
     console.error(error);
   }
