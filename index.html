@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>jQuery Pizza</title>
+  <title>ThePrepProject</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./assets/css/jass.css">
@@ -13,15 +15,24 @@
 <body>
   <div class="bg-dark min-100-vh flex-row align-center justify-center">
     <div class="col-11 col-sm-8">
-      <h1 class="text-light">Let's Find A Recipe</h1>
+      <h1 class="text">Let's Find A Recipe</h1>
 
-      <main>
+      <main id="container">
 
         <!-- Protein Section -->
         <div>
           <form class="group-protein">
             <fieldset>
               <legend>Choose Your Protein</legend>
+              <p>What are proteins?<br>
+                Protein is an important part of a healthy diet.
+                Proteins are made up of chemical 'building blocks' called amino acids.
+                Your body uses amino acids to build and repair muscles and bones and to make hormones and enzymes. They
+                can also be used as an energy source.
+              </p>
+
+              <hr id="top">
+
               <ul class="checkbox">
                 <li>
                   <input type="checkbox" id="cb1" value="Chicken Breast" />
@@ -39,12 +50,24 @@
           </form>
         </div>
 
+        <hr id="bottom">
 
         <!-- Carbs Section -->
         <div>
           <form>
             <fieldset class="group-carbs">
               <legend>Choose Your Carbs</legend>
+              <p>What are carbohydrates?<br>
+                Carbohydrates, or carbs, are sugar molecules. Along with proteins and fats, carbohydrates are one of
+                three main nutrients found in foods and drinks.
+
+                Your body breaks down carbohydrates into glucose. Glucose, or blood sugar, is the main source of energy
+                for your body's cells, tissues, and organs. Glucose can be used immediately or stored in the liver and
+                muscles for later use.</p>
+
+              <hr id="top">
+
+
               <ul class="checkbox">
                 <li>
                   <input type="checkbox" id="cb4" value="Sweet Potatoes" />
@@ -62,17 +85,29 @@
 
             
           </form>
-<div id="unique">   
 
-</div>
+          <div id="unique">
+
+          </div>
+
         </div>
 
+        <hr id="bottom">
 
         <!-- Fats Section -->
         <div>
           <form>
             <fieldset class="group-carbs">
-              <legend>Choose Your Carbs</legend>
+              <legend>Choose Your Fats</legend>
+              <p>
+                There are four major dietary fats in food:<br>
+                Saturated fats.<br>
+                Transfats.<br>
+                Monounsaturated fats.<br>
+                Polyunsaturated fats.</p>
+
+              <hr id="top">
+
               <ul class="checkbox">
                 <li>
                   <input type="checkbox" id="cb7" value="Avocadoes" />
@@ -83,8 +118,8 @@
                   <label class="title" for="cb8">Olive Oil</label>
                 </li>
                 <li>
-                  <input type="checkbox" id="cb9" value="" />
-                  <label class="title" for="cb9">Potatoes</label>
+                  <input type="checkbox" id="cb9" value="Nuts" />
+                  <label class="title" for="cb9">Nuts</label>
                 </li>
             </fieldset>
             <button id="submit-protein" class="btn btn-block btn-danger">Submit Form</button>
