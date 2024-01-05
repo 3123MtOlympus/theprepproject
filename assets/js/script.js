@@ -1,33 +1,72 @@
-var formEl = $('#pizza-form');
-var firstNameEl = $('input[name="first-name"]');
-var lastNameEl = $('input[name="last-name"]');
-var emailEl = $('input[name="email"]');
-var githubEl = $('input[name="github"]');
+var proteinFormEl = $('.group-protein');
+var carbsFormEl = $('.group-carbs');
+var fatsFormEl = $('.group-fats');
+
 
 function handleFormSubmit(event) {
   // Prevent the default behavior
   event.preventDefault();
 
-  console.log('First Name:', firstNameEl.val());
-  console.log('Last Name:', lastNameEl.val());
-  console.log('Email:', emailEl.val());
-  console.log('GitHub:', githubEl.val());
+// Protein Section 
 
   // Select all checked options
   var checkedEl = $('input:checked');
-  var selected = [];
+  var protein = [];
 
   // Loop through checked options to store in array
   $.each(checkedEl, function () {
-    selected.push($(this).val());
+    protein.push($(this).val());
   });
-  console.log('Toppings: ', selected.join(', '));
-
-  // Clear input fields
-  $('input[type="text"]').val('');
-  $('input[type="email"]').val('');
-  $('input[type="checkbox"]').prop('checked', false);
-}
+  console.log('Protein: ', selected.join(', '));
 
 // Submit event on the form
-formEl.on('submit', handleFormSubmit);
+proteinFormEl.on('submit', handleFormSubmit);
+
+
+// Carbs Section
+
+ // Select all checked options
+var checkedEl = $('input:checked');
+var carbs = [];
+
+// Loop through checked options to store in array
+$.each(checkedEl, function () {
+  carbs.push($(this).val());
+});
+console.log('Carbs: ', selected.join(', '));
+
+// Submit event on the form
+carbsFormEl.on('submit', handleFormSubmit);
+
+
+// Fats section
+
+ // Select all checked options
+var checkedEl = $('input:checked');
+var fats = [];
+
+// Loop through checked options to store in array
+$.each(checkedEl, function () {
+  fats.push($(this).val());
+});
+console.log('Fats: ', selected.join(', '));
+
+// Submit event on the form
+fatsFormEl.on('submit', handleFormSubmit);
+
+}
+
+// Trying to set up action after submit button is pressed, action should go to the next questiomn
+let proteinSubmit = document.getElementById('#submit-protein');
+let carbsSubmit = document.getElementById('#submit-carbs');
+let fatsSubmit = document.getElementById('#submit-fats');
+
+
+// Submit and go to to next slide - unsure how to print
+optionsElement.innerHTML = "";
+for (let proteinSubmit) {
+  const button = document.createElement(".submit-protein");
+  button.textContent = option;
+  button.submit = () => checkAnswer(option);
+  optionsElement.appendChild(button);
+}

@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>jQuery Pizza</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./assets/css/jass.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
@@ -12,72 +13,88 @@
 <body>
   <div class="bg-dark min-100-vh flex-row align-center justify-center">
     <div class="col-11 col-sm-8">
-      <h1 class="text-light">Free Pizza Raffle Sign Up!</h1>
+      <h1 class="text-light">Let's Find A Recipe</h1>
 
-      <div class="card rounded bg-light p-3">
-        <div class="card-body">
-          <form id="pizza-form">
-            <div class="row">
-              <div class="col-12 col-sm-6">
-                <label for="first-name">First Name</label>
-                <input type="text" class="form-input" name="first-name" placeholder="Enter first name" />
-              </div>
-              <div class="col-12 col-sm-6">
-                <label for="last-name">Last Name</label>
-                <input type="text" class="form-input" name="last-name" placeholder="Enter last name" />
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col-12 col-sm-6">
-                <label for="email">Email</label>
-                <input type="email" class="form-input" name="email" placeholder="Enter email" />
-              </div>
-              <div class="col-12 col-sm-6">
-                <label for="github">GitHub</label>
-                <input type="text" class="form-input" name="github" placeholder="Enter GitHub" />
-              </div>
-            </div>
-            <fieldset class="group">
-              <legend>Select standard pizza toppings</legend>
-              <ul class="checkbox">
-                <li>
-                  <input type="checkbox" id="cb1" value="pepperoni" />
-                  <label for="cb1">Pepperoni</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb2" value="sausage" />
-                  <label for="cb2">Sausage</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb3" value="mushrooms" />
-                  <label for="cb3">Mushrooms</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb4" value="onions" />
-                  <label for="cb4">Onions</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb5" value="green peppers" />
-                  <label for="cb5">Green Peppers</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="cb6" value="extra cheese" />
-                  <label for="cb6">Extra Cheese</label>
-                </li>
-              </ul>
-            </fieldset>
-            <button class="btn btn-block btn-danger">Submit Form</button>
-          </form>
-        </div>
-      </div>
+      <main>
+
+        <!-- Protein Section -->
+
+        <form>
+          <fieldset class="group-protein">
+            <legend>Choose Your Protein</legend>
+            <ul class="checkbox">
+              <li>
+                <input type="checkbox" id="cb1" value="Chicken Breast" />
+                <label class="title" for="cb1">Chicken Breast</label>
+              </li>
+              <li>
+                <input type="checkbox" id="cb2" value="Salmon" />
+                <label class="title" for="cb2">Salmon</label>
+              </li>
+              <li>
+                <input type="checkbox" id="cb3" value="Steak" />
+                <label class="title" for="cb3">Steak</label>
+              </li>
+          </fieldset>
+          <button id="submit-protein" class="btn btn-block btn-danger">Submit Form</button>
+        </form>
+
+        <!-- Carbs Section -->
+
+        <form>
+          <fieldset class="group-carbs">
+            <legend>Choose Your Carbs</legend>
+            <ul class="checkbox">
+              <li>
+                <input type="checkbox" id="cb1" value="Sweet Potatoes" />
+                <label class="title" for="cb1">Sweet Potatoes</label>
+              </li>
+              <li>
+                <input type="checkbox" id="cb2" value="Fruits" />
+                <label class="title" for="cb2">Fruits</label>
+              </li>
+              <li>
+                <input type="checkbox" id="cb3" value="Potatoes" />
+                <label class="title" for="cb3">Potatoes</label>
+              </li>
+          </fieldset>
+          <button id="submit-carbs" class="btn btn-block btn-danger">Submit Form</button>
+        </form>
+
+        <!-- Fats Section -->
+
+        <form>
+          <fieldset class="group-carbs">
+            <legend>Choose Your Carbs</legend>
+            <ul class="checkbox">
+              <li>
+                <input type="checkbox" id="cb1" value="Avocadoes" />
+                <label class="title" for="cb1">Avocadoes</label>
+              </li>
+              <li>
+                <input type="checkbox" id="cb2" value="Olive Oil" />
+                <label class="title" for="cb2">Olive Oil</label>
+              </li>
+              <li>
+                <input type="checkbox" id="cb3" value="" />
+                <label class="title" for="cb3">Potatoes</label>
+              </li>
+          </fieldset>
+          <button id="submit-fats" class="btn btn-block btn-danger">Submit Form</button>
+        </form>
     </div>
   </div>
+
+  </main>
+
+
 
 
   <!-- Added link to the jQuery library -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
   <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
 
