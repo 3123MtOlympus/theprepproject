@@ -6,9 +6,10 @@ let proteinSubmit = $('#submit-protein');
 
 
 var FNB = $('#fetch-nutrition-button');
-var uniqueEl = $('#unique');
-console.log(uniqueEl);
-console.log(FNB);
+
+// Test var for ingredients array
+var ingredientsList = ["4  skinless, boneless chicken breasts", "2 sprigs fresh oregano", "1 sprig fresh rosemary", "2 ounces feta cheese in brine, with 2 ounces of brine reserved", "1 cup water", "1 clove garlic", "2 tablespoons olive oil", "freshly cracked black pepper to taste", "4 slices  lemon"]
+
 function handleFormSubmit(event) {
   // Prevent the default behavior
   event.preventDefault();
@@ -41,9 +42,10 @@ function IngredientParser(ingredients) {
   //console.log each ingredients as a string
 }
 
-async function getNutritionAPI() {
-  var ingredients = "4  skinless, boneless chicken breasts";
-  const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=' + ingredients;
+
+async function getNutritionAPI(ingredient) {
+  const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=' + ingredient;
+
   const options = {
     method: 'GET',
     headers: {
@@ -55,15 +57,32 @@ async function getNutritionAPI() {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    // console.log(result);
-    IngredientParser(result);
+    console.log(result);
+    // IngredientParser(result);
   } catch (error) {
     console.error(error);
   }
 
 }
 
-FNB.on('click', getNutritionAPI);
+FNB.on('click', ParseRecipeDetailsIngredients);
+
+function ParseRecipeDetailsIngredients(ingredients) {
+  // manually setting ingredients to the array of ingredients from Recipe API
+  ingredients = ingredientsList;
+
+  //updateList now has the ingredient array, ready to be manipulated
+  let updateList = ingredients;
+  console.log(updateList);
+
+  
+
+  for(let i = 0; i < ingredients.length; i++){
+    getNutritionAPI(ingredients[i]);
+  }
+
+  // console.log(ingredients);
+}
 
 
 
@@ -73,6 +92,7 @@ FNB.on('click', getNutritionAPI);
 
 
 function searchByIngredient(ingredients) {
+
 
   var inclIngredientsQuery = ingredients.join(", ");
 
@@ -99,6 +119,7 @@ function searchByIngredient(ingredients) {
   });
 };
 
+
 function recipeDetails(id) {
   const settings = {
     async: true,
@@ -112,6 +133,7 @@ function recipeDetails(id) {
   };
 
   $.ajax(settings).done(function (response) {
+    // ParseRecipeDetailsIngredients(response.recipe.data.Ingredients);
     console.log(response.recipe.data.Name);
     console.log(response.recipe.data.Description);
     console.log(response.recipe.data.Directions);
