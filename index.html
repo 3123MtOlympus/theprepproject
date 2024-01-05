@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/jass.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
@@ -23,7 +24,9 @@
         <div>
           <form class="group-protein">
             <fieldset>
-              <legend>Choose Your Protein</legend>
+             
+               
+              <legend><i class="fa-thin fa-drumstick-bite"></i> Choose Your Protein</legend>
               <p>What are proteins?<br>
                 Protein is an important part of a healthy diet.
                 Proteins are made up of chemical 'building blocks' called amino acids.
@@ -56,7 +59,7 @@
         <div>
           <form>
             <fieldset class="group-carbs">
-              <legend>Choose Your Carbs</legend>
+              <legend><i class="fa-light fa-bread-slice"></i> Choose Your Carbs</legend>
               <p>What are carbohydrates?<br>
                 Carbohydrates, or carbs, are sugar molecules. Along with proteins and fats, carbohydrates are one of
                 three main nutrients found in foods and drinks.
@@ -83,7 +86,7 @@
                 </li>
             </fieldset>
 
-            
+
           </form>
 
           <div id="unique">
@@ -98,13 +101,11 @@
         <div>
           <form>
             <fieldset class="group-carbs">
-              <legend>Choose Your Fats</legend>
+              <legend><i class="fa-light fa-bottle-droplet"></i> Choose Your Fats</legend>
               <p>
-                There are four major dietary fats in food:<br>
-                Saturated fats.<br>
-                Transfats.<br>
-                Monounsaturated fats.<br>
-                Polyunsaturated fats.</p>
+                Fat is a source of essential fatty acids, which the body cannot make itself. Fat helps the body absorb
+                vitamin A, vitamin D and vitamin E. These vitamins are fat-soluble, which means they can only be
+                absorbed with the help of fats.</p>
 
               <hr id="top">
 
@@ -122,8 +123,12 @@
                   <label class="title" for="cb9">Nuts</label>
                 </li>
             </fieldset>
-            <button id="submit-protein" class="btn btn-block btn-danger">Submit Form</button>
 
+            <!-- Fix icon -->
+
+            <p><i class="fa-solid fa-kitchen-set"></i> Now lets get that recipe!</p>
+
+            <button id="submit-protein" class="btn btn-block btn-danger">Submit Form</button>
           </form>
         </div>
 
