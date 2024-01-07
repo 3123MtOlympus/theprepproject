@@ -4,9 +4,6 @@ var fatsFormEl = $('.group-fats');
 
 let proteinSubmit = $('#submit-protein');
 
-
-var FNB = $('#fetch-nutrition-button');
-
 // Test var for ingredients array
 var ingredientsList = ["4  skinless, boneless chicken breasts", "2 sprigs fresh oregano", "1 sprig fresh rosemary", "2 ounces feta cheese in brine, with 2 ounces of brine reserved", "1 cup water", "1 clove garlic", "2 tablespoons olive oil", "freshly cracked black pepper to taste", "4 slices  lemon"]
 
@@ -31,8 +28,17 @@ function handleFormSubmit(event) {
   console.log(protein);
 
   //API call
-  searchByIngredient(protein);
+  // searchByIngredient(protein);
+
+save(checkedEl);
 }
+
+function save(event) {
+  // uses DOM traversal to select the text content of the corresponding save button
+  $.each(event, function () {
+  localStorage.setItem($(this).attr("value"), JSON.stringify(true));
+})
+};
 
 // Submit event on the form
 proteinSubmit.on('click', handleFormSubmit);
@@ -65,8 +71,6 @@ async function getNutritionAPI(ingredient) {
 
 }
 
-FNB.on('click', ParseRecipeDetailsIngredients);
-
 function ParseRecipeDetailsIngredients(ingredients) {
   // manually setting ingredients to the array of ingredients from Recipe API
   ingredients = ingredientsList;
@@ -83,13 +87,6 @@ function ParseRecipeDetailsIngredients(ingredients) {
 
   // console.log(ingredients);
 }
-
-
-
-
-// var inclIngredients = ["chicken", "salt"];
-
-
 
 function searchByIngredient(ingredients) {
 
