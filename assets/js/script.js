@@ -2,6 +2,8 @@ var proteinFormEl = $('.group-protein');
 var carbsFormEl = $('.group-carbs');
 var fatsFormEl = $('.group-fats');
 
+var acumulator = 0;
+
 let proteinSubmit = $('#submit-protein');
 
 
@@ -38,11 +40,18 @@ function handleFormSubmit(event) {
 proteinSubmit.on('click', handleFormSubmit);
 
 function IngredientParser(ingredients) {
-  console.log(ingredients);
-  //console.log each ingredients as a string
+  return ingredients.calories;
+  // console.log(ingredients);
+  // let acumulator = 0;
+
+  // for(let i=0; i < ingredients.length; i++){
+  //   acumulator += ingredients.calories;
+  // }
+  // console.log(acumulator);
+  // //console.log each ingredients as a string
 }
 
-
+// Nutrition API 
 async function getNutritionAPI(ingredient) {
   const url = 'https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition?query=' + ingredient;
 
@@ -57,30 +66,31 @@ async function getNutritionAPI(ingredient) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    console.log(result);
-    // IngredientParser(result);
+    // console.log(result[0]);
+    // IngredientParser(result[0]);
+    if(result[0].calories){
+      acumulator += result[0].calories;
+    }
   } catch (error) {
     console.error(error);
   }
 
 }
 
-FNB.on('click', ParseRecipeDetailsIngredients);
+// FNB.on('click', ParseRecipeDetailsIngredients);
 
-function ParseRecipeDetailsIngredients(ingredients) {
-  // manually setting ingredients to the array of ingredients from Recipe API
-  ingredients = ingredientsList;
+async function ParseRecipeDetailsIngredients(ingredients) {
 
   //updateList now has the ingredient array, ready to be manipulated
   let updateList = ingredients;
   console.log(updateList);
 
   
-
   for(let i = 0; i < ingredients.length; i++){
-    getNutritionAPI(ingredients[i]);
-  }
+    await getNutritionAPI(ingredients[i]);
 
+  }
+  console.log(acumulator);
   // console.log(ingredients);
 }
 
@@ -103,7 +113,7 @@ function searchByIngredient(ingredients) {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
+      'X-RapidAPI-Key': '8362023de3msh764288503d79e22p14e4a6jsn3b9cda46e2b0',
       'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
     },
     processData: false,
@@ -127,17 +137,17 @@ function recipeDetails(id) {
     url: 'https://all-in-one-recipe-api.p.rapidapi.com/details/' + id,
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
+      'X-RapidAPI-Key': '8362023de3msh764288503d79e22p14e4a6jsn3b9cda46e2b0',
       'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
     }
   };
 
   $.ajax(settings).done(function (response) {
-    // ParseRecipeDetailsIngredients(response.recipe.data.Ingredients);
+    ParseRecipeDetailsIngredients(response.recipe.data.Ingredients);
     console.log(response.recipe.data.Name);
     console.log(response.recipe.data.Description);
     console.log(response.recipe.data.Directions);
-    console.log(response.recipe.data.Ingredients);
+    // console.log(response.recipe.data.Ingredients);
     console.log(response.recipe.data.Time);
 
 
