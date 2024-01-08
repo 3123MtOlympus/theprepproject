@@ -6,8 +6,10 @@ var acumulator = 0;
 
 let proteinSubmit = $('#submit-protein');
 
+var checkboxEl = $('input');
+console.log(checkboxEl)
 
-var FNB = $('#fetch-nutrition-button');
+let proteinSubmit = $('#submit-protein');
 
 // Test var for ingredients array
 var ingredientsList = ["4  skinless, boneless chicken breasts", "2 sprigs fresh oregano", "1 sprig fresh rosemary", "2 ounces feta cheese in brine, with 2 ounces of brine reserved", "1 cup water", "1 clove garlic", "2 tablespoons olive oil", "freshly cracked black pepper to taste", "4 slices  lemon"]
@@ -34,7 +36,30 @@ function handleFormSubmit(event) {
 
   //API call
   searchByIngredient(protein);
+
+save(checkboxEl);
 }
+
+var modalBody = $('.modal-body');
+
+
+
+function save(event) {
+  // uses DOM traversal to select the text content of the corresponding save button
+  $.each(event, function () {
+      localStorage.setItem($(this).attr("value"), JSON.stringify($(this).prop('checked')));
+    }
+)
+};
+
+function load(event) {
+  // uses DOM traversal to select the text content of the corresponding save button
+  $.each(event, function () {
+      var checkboxInput = JSON.parse(localStorage.getItem($(this).attr("value")));
+      $(this).prop('checked', checkboxInput);
+    }
+)
+};
 
 // Submit event on the form
 proteinSubmit.on('click', handleFormSubmit);
@@ -76,6 +101,9 @@ async function getNutritionAPI(ingredient) {
 }
 
 
+function ParseRecipeDetailsIngredients(ingredients) {
+  // manually setting ingredients to the array of ingredients from Recipe API
+  ingredients = ingredientsList;
 
 async function ParseRecipeDetailsIngredients(ingredients) {
 
@@ -120,13 +148,6 @@ async function ParseRecipeDetailsIngredients(ingredients) {
   console.log(acumulator);
   // console.log(ingredients);
 }
-
-
-
-
-// var inclIngredients = ["chicken", "salt"];
-
-
 
 function searchByIngredient(ingredients) {
 
@@ -177,7 +198,39 @@ function recipeDetails(id) {
     // console.log(response.recipe.data.Ingredients);
     console.log(response.recipe.data.Time);
 
+var recipeName = $('<h1>').text(response.recipe.data.Name);
+var recipeDesc = $('<h4>').text(response.recipe.data.Description);
+var recipeDir = $('<ul>');
+var recipeIng = $('<ul>');
+var recipeTime = $('<ul>');
+
+$.each(response.recipe.data.Directions, function(){
+  var getDirections = $('<li>').text(this);
+  recipeDir.append(getDirections);
+}
+);
+
+$.each(response.recipe.data.Ingredients, function(){
+  var getIngredients = $('<li>').text(this);
+  recipeIng.append(getIngredients);
+}
+);
+
+$.each(response.recipe.data.Time, function(){
+  var getTime = $('<li>').text(this);
+  recipeTime.append(getTime);
+}
+);
+
+modalBody.append(recipeName);
+modalBody.append(recipeDesc);
+modalBody.append(recipeDir);
+modalBody.append(recipeIng);
+modalBody.append(recipeTime);
 
 
-  });
+
+
+});
 };
+load(checkboxEl);
