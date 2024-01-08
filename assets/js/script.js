@@ -31,10 +31,14 @@ function handleFormSubmit(event) {
   console.log(protein);
 
   //API call
-  // searchByIngredient(protein);
+  searchByIngredient(protein);
 
 save(checkboxEl);
 }
+
+var modalBody = $('.modal-body');
+
+
 
 function save(event) {
   // uses DOM traversal to select the text content of the corresponding save button
@@ -150,8 +154,39 @@ function recipeDetails(id) {
     console.log(response.recipe.data.Ingredients);
     console.log(response.recipe.data.Time);
 
+var recipeName = $('<h1>').text(response.recipe.data.Name);
+var recipeDesc = $('<h4>').text(response.recipe.data.Description);
+var recipeDir = $('<ul>');
+var recipeIng = $('<ul>');
+var recipeTime = $('<ul>');
+
+$.each(response.recipe.data.Directions, function(){
+  var getDirections = $('<li>').text(this);
+  recipeDir.append(getDirections);
+}
+);
+
+$.each(response.recipe.data.Ingredients, function(){
+  var getIngredients = $('<li>').text(this);
+  recipeIng.append(getIngredients);
+}
+);
+
+$.each(response.recipe.data.Time, function(){
+  var getTime = $('<li>').text(this);
+  recipeTime.append(getTime);
+}
+);
+
+modalBody.append(recipeName);
+modalBody.append(recipeDesc);
+modalBody.append(recipeDir);
+modalBody.append(recipeIng);
+modalBody.append(recipeTime);
 
 
-  });
+
+
+});
 };
 load(checkboxEl);
