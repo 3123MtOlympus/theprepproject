@@ -10,7 +10,6 @@ var checkboxEl = $('input');
 console.log(checkboxEl)
 
 
-
 // Test var for ingredients array
 var ingredientsList = ["4  skinless, boneless chicken breasts", "2 sprigs fresh oregano", "1 sprig fresh rosemary", "2 ounces feta cheese in brine, with 2 ounces of brine reserved", "1 cup water", "1 clove garlic", "2 tablespoons olive oil", "freshly cracked black pepper to taste", "4 slices  lemon"]
 
@@ -64,17 +63,7 @@ function load(event) {
 // Submit event on the form
 proteinSubmit.on('click', handleFormSubmit);
 
-function IngredientParser(ingredients) {
-  return ingredients.calories;
-  // console.log(ingredients);
-  // let acumulator = 0;
 
-  // for(let i=0; i < ingredients.length; i++){
-  //   acumulator += ingredients.calories;
-  // }
-  // console.log(acumulator);
-  // //console.log each ingredients as a string
-}
 
 // Nutrition API 
 async function getNutritionAPI(ingredient) {
@@ -91,6 +80,7 @@ async function getNutritionAPI(ingredient) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
+
     if (result[0].calories) {
       calorieAcumulator += result[0].calories;
     }
@@ -102,44 +92,46 @@ async function getNutritionAPI(ingredient) {
 
 
 
-  // manually setting ingredients to the array of ingredients from Recipe API
-  //ingredients = ingredientsList;
 
-  async function ParseRecipeDetailsIngredients(ingredients) {
+async function ParseRecipeDetailsIngredients(ingredients) {
+  //Code for turning ¼ into something readable by nutrition api
+  var updateIngredients = ingredients;
+  //const fractionRegex = /\s*\/|\d+\/\d+\s*/gi;
+  //const string = "¼ cup rice wine vinegar";
+  //const matches = string.replace("¼", "0.25"); // Matches "¼"
+  //console.log(matches); // Output: ["¼"]
+  
+  for(let i=0; i < updateIngredients.length; i++){
+    ingredients[i] = updateIngredients[i].replace("¼", "0.25");
+    ingredients[i] = updateIngredients[i].replace("½", "0.5");
+    ingredients[i] = updateIngredients[i].replace("⅓", "0.3");
+    ingredients[i] = updateIngredients[i].replace("⅖", "0.6");
+    ingredients[i] = updateIngredients[i].replace("¾", "0.75");
+    ingredients[i] = updateIngredients[i].replace("⅛", "0.125");
+  }
+ 
+  /*const updatedIngredients = ingredients.map(ingredient => {
+    // Regular expression to match different fractions (explicitly including spaces before and after)
 
-    //updateList now has the ingredient array, ready to be manipulated
-    console.log(ingredients);
-    //Code for turning ¼ into something readable by nutrition api
-
-    // const ingredients = [
-    //   '2  skinless, boneless chicken breast halves',
-    //   '1 (1.27 ounce) packet dry fajita seasoning, divided',
-    //   '1 tablespoon vegetable oil',
-    //   '1 (15 ounce) can black beans, rinsed and drained',
-    //   '1 (11 ounce) can Mexican-style corn',
-    //   '½ cup salsa',
-    //   '1 (10 ounce) package mixed salad greens',
-    //   '1  onion, chopped',
-    //   '1  tomato, cut into wedges'
-    // ];
-
-    const updatedIngredients = ingredients.map(ingredient => {
-      // Regular expression to match different fractions (explicitly including spaces before and after)
-      const fractionRegex = /\s*\/|\d+\/\d+\s*/g;
-
-      // Replace each matched fraction with its decimal equivalent
-      return ingredient.replace(fractionRegex, match => {
-        if (match === "/") {
-          return "0.5"; // Handle single slash as half
-        } else {
-          const [numerator, denominator] = match.trim().split("/"); // Trim spaces before splitting
-          return (Number(numerator) / Number(denominator)).toFixed(2); // Convert and round
-        }
-      });
+  
+    // Replace each matched fraction with its decimal equivalent
+    return ingredient.replace(fractionRegex, match => {
+      if (match === "/") {
+        return "0.5"; // Handle single slash as half
+      } else {
+        const [numerator, denominator] = match.trim().split("/"); // Trim spaces before splitting
+        return (Number(numerator) / Number(denominator)).toFixed(2); // Convert and round
+      }
     });
+  });*/
+  
+  console.log(updateIngredients);
 
-    console.log(updatedIngredients);
+  for(let i = 0; i < updateIngredients.length; i++){
+    await getNutritionAPI(updateIngredients[i]);
 
+  }
+}
 
     for (let i = 0; i < ingredients.length; i++) {
       await getNutritionAPI(updatedIngredients[i]);
@@ -157,7 +149,6 @@ async function getNutritionAPI(ingredient) {
 
 
     var inclIngredientsQuery = ingredients.join(", ");
-
     const settings = {
       async: true,
       crossDomain: true,
@@ -165,7 +156,7 @@ async function getNutritionAPI(ingredient) {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'X-RapidAPI-Key': '8362023de3msh764288503d79e22p14e4a6jsn3b9cda46e2b0',
+        'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
         'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
       },
       processData: false,
@@ -189,7 +180,7 @@ async function getNutritionAPI(ingredient) {
       url: 'https://all-in-one-recipe-api.p.rapidapi.com/details/' + id,
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '8362023de3msh764288503d79e22p14e4a6jsn3b9cda46e2b0',
+        'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
         'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
       }
     };
@@ -231,7 +222,6 @@ async function getNutritionAPI(ingredient) {
       modalBody.append(recipeDir);
       modalBody.append(recipeIng);
       modalBody.append(recipeTime);
-
 
 
 
