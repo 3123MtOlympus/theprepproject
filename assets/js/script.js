@@ -2,6 +2,9 @@ var proteinFormEl = $('.group-protein');
 var carbsFormEl = $('.group-carbs');
 var fatsFormEl = $('.group-fats');
 
+var checkboxEl = $('input');
+console.log(checkboxEl)
+
 let proteinSubmit = $('#submit-protein');
 
 // Test var for ingredients array
@@ -30,14 +33,15 @@ function handleFormSubmit(event) {
   //API call
   // searchByIngredient(protein);
 
-save(checkedEl);
+save(checkboxEl);
 }
 
 function save(event) {
   // uses DOM traversal to select the text content of the corresponding save button
   $.each(event, function () {
-  localStorage.setItem($(this).attr("value"), JSON.stringify(true));
-})
+      localStorage.setItem($(this).attr("value"), JSON.stringify($(this).prop('checked')));
+    }
+)
 };
 
 // Submit event on the form
