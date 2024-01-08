@@ -66,8 +66,6 @@ async function getNutritionAPI(ingredient) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    // console.log(result[0]);
-    // IngredientParser(result[0]);
     if(result[0].calories){
       acumulator += result[0].calories;
     }
@@ -77,17 +75,46 @@ async function getNutritionAPI(ingredient) {
 
 }
 
-// FNB.on('click', ParseRecipeDetailsIngredients);
+
 
 async function ParseRecipeDetailsIngredients(ingredients) {
 
   //updateList now has the ingredient array, ready to be manipulated
-  let updateList = ingredients;
-  console.log(updateList);
+  console.log(ingredients);
+  //Code for turning ¼ into something readable by nutrition api
+
+  // const ingredients = [
+  //   '2  skinless, boneless chicken breast halves',
+  //   '1 (1.27 ounce) packet dry fajita seasoning, divided',
+  //   '1 tablespoon vegetable oil',
+  //   '1 (15 ounce) can black beans, rinsed and drained',
+  //   '1 (11 ounce) can Mexican-style corn',
+  //   '½ cup salsa',
+  //   '1 (10 ounce) package mixed salad greens',
+  //   '1  onion, chopped',
+  //   '1  tomato, cut into wedges'
+  // ];
+  
+  const updatedIngredients = ingredients.map(ingredient => {
+    // Regular expression to match different fractions (explicitly including spaces before and after)
+    const fractionRegex = /\s*\/|\d+\/\d+\s*/g;
+  
+    // Replace each matched fraction with its decimal equivalent
+    return ingredient.replace(fractionRegex, match => {
+      if (match === "/") {
+        return "0.5"; // Handle single slash as half
+      } else {
+        const [numerator, denominator] = match.trim().split("/"); // Trim spaces before splitting
+        return (Number(numerator) / Number(denominator)).toFixed(2); // Convert and round
+      }
+    });
+  });
+  
+  console.log(updatedIngredients);
 
   
   for(let i = 0; i < ingredients.length; i++){
-    await getNutritionAPI(ingredients[i]);
+    await getNutritionAPI(updatedIngredients[i]);
 
   }
   console.log(acumulator);
