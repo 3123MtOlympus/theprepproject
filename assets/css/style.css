@@ -82,3 +82,7 @@ label{
   background-color: aliceblue;
 
 }
+.checkbox {
+  display: flex;
+  justify-content: center;
+}
