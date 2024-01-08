@@ -147,6 +147,7 @@ async function getNutritionAPI(ingredient) {
     var calories = $('<h4>').text('Calories: ' + calorieAcumulator);
     modalBody.append(calories);
     // console.log(ingredients);
+    calorieAcumulator = 0;
   };
 
 
