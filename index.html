@@ -24,9 +24,9 @@
         <div>
           <form class="group-protein">
             <fieldset>
-             
-               
-              <legend><i class="fa-thin fa-drumstick-bite"></i> Choose Your Protein</legend>
+
+
+              <legend><i class="fas fa-thin fa-drumstick-bite"></i> Choose Your Protein</legend>
               <p>What are proteins?<br>
                 Protein is an important part of a healthy diet.
                 Proteins are made up of chemical 'building blocks' called amino acids.
@@ -59,7 +59,7 @@
         <div>
           <form>
             <fieldset class="group-carbs">
-              <legend><i class="fa-light fa-bread-slice"></i> Choose Your Carbs</legend>
+              <legend><i class="fas fa-light fa-bread-slice"></i> Choose Your Carbs</legend>
               <p>What are carbohydrates?<br>
                 Carbohydrates, or carbs, are sugar molecules. Along with proteins and fats, carbohydrates are one of
                 three main nutrients found in foods and drinks.
@@ -101,7 +101,7 @@
         <div>
           <form>
             <fieldset class="group-carbs">
-              <legend><i class="fa-light fa-bottle-droplet"></i> Choose Your Fats</legend>
+              <legend><i class="fas fa-light fa-bottle-droplet"></i> Choose Your Fats</legend>
               <p>
                 Fat is a source of essential fatty acids, which the body cannot make itself. Fat helps the body absorb
                 vitamin A, vitamin D and vitamin E. These vitamins are fat-soluble, which means they can only be
@@ -124,16 +124,10 @@
                 </li>
             </fieldset>
 
-
-            <!-- Button trigger modal -->
-
-
-
-            <!-- Fix icon -->
-
             <p><i class="fa-solid fa-kitchen-set"></i> Now lets get that recipe!</p>
 
-            <button id="submit-protein" class="btn btn-block btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Submit Form</button>
+            <button id="submit-protein" class="btn btn-block btn-danger" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Submit Form</button>
           </form>
         </div>
 
@@ -142,32 +136,87 @@
 
   </main>
 
-<div>
+  <div>
 
 
-<!-- Modal -->
+    <!-- Modal -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Your Recipe</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
 
-       <!-- Do we need? <button type="button" class="btn btn-primary">Save changes</button> --> 
-       
+            <!-- Do we need? <button type="button" class="btn btn-primary">Save changes</button> -->
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
+
+  <!-- CARDS SECTION -->
+  <h1>Learn More About MacroNutrition</h1>
+  <div class="card-inline">
+    <div class="card" style="width: 18rem;">
+      <a href="https://www.nutrition.org.uk/healthy-sustainable-diets/protein/" class="card-text">
+        <img src="./assets/images/Protein+foods+for+kids.jpg" class="card-img-top" alt="Protein Sources">
+      </a>
+      <div class="card-body">
+        <h3>Protein</h3>
+        <p class="card-text">Learn more about Protein</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <a href="https://www.theportlandclinic.com/food-myth-1-carbs-are-bad/" class="card-text">
+        <img src="./assets/images/carbohydrates.jpg" class="card-img-top" alt="Carb Sources">
+      </a>
+
+      <div class="card-body">
+        <h3>Carbs</h3>
+        <p class="card-text">Carb Myths</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <a href="https://www.health.harvard.edu/staying-healthy/know-the-facts-about-fats" class="card-text">
+        <img
+          src="./assets/images/healthy-fats-sources-concept-top-view-different-food-ingredients-chalkboard-ealthy-words-dark-background-flat-lay-155184072.webp"
+          class="card-img-top" alt="Healthy Fats">
+      </a>
+
+      <div class="card-body">
+        <h3>Fats</h3>
+        <p class="card-text"> Learn about Healthy Fats</p>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <a href="https://www.calculator.net/macro-calculator.html">
+        <img src="./assets/images/istockphoto-650859478-612x612.jpg" class="card-img-top" alt="Calculator">
+      </a>
+      <div class="card-body">
+        <h3>Macro Calculator</h3>
+       <p class="card-text">Calculate your MacroNutrition number TODAY!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="bg-dark">
+      <h3> Brought to you by: Nick, Mike, Chris - EDx Bootcamp 2024</h3>
+    </div> 
+  </footer>
 
 
   <!-- Added link to the jQuery library -->
