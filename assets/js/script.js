@@ -44,6 +44,15 @@ function save(event) {
 )
 };
 
+function load(event) {
+  // uses DOM traversal to select the text content of the corresponding save button
+  $.each(event, function () {
+      var checkboxInput = JSON.parse(localStorage.getItem($(this).attr("value")));
+      $(this).prop('checked', checkboxInput);
+    }
+)
+};
+
 // Submit event on the form
 proteinSubmit.on('click', handleFormSubmit);
 
@@ -145,3 +154,4 @@ function recipeDetails(id) {
 
   });
 };
+load(checkboxEl);
