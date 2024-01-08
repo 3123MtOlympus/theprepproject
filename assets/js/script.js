@@ -9,6 +9,8 @@ let proteinSubmit = $('#submit-protein');
 var checkboxEl = $('input');
 console.log(checkboxEl)
 
+
+
 // Test var for ingredients array
 var ingredientsList = ["4  skinless, boneless chicken breasts", "2 sprigs fresh oregano", "1 sprig fresh rosemary", "2 ounces feta cheese in brine, with 2 ounces of brine reserved", "1 cup water", "1 clove garlic", "2 tablespoons olive oil", "freshly cracked black pepper to taste", "4 slices  lemon"]
 
@@ -101,7 +103,7 @@ async function getNutritionAPI(ingredient) {
 
 
   // manually setting ingredients to the array of ingredients from Recipe API
-  ingredients = ingredientsList;
+  //ingredients = ingredientsList;
 
   async function ParseRecipeDetailsIngredients(ingredients) {
 
@@ -233,7 +235,9 @@ async function getNutritionAPI(ingredient) {
 
 
 
+
     });
   };
 
   load(checkboxEl);
+
