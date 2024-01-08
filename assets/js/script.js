@@ -2,12 +2,13 @@ var proteinFormEl = $('.group-protein');
 var carbsFormEl = $('.group-carbs');
 var fatsFormEl = $('.group-fats');
 
-var acumulator = 0;
+var calorieAcumulator = 0;
 
 let proteinSubmit = $('#submit-protein');
 
 var checkboxEl = $('input');
 console.log(checkboxEl)
+
 
 
 // Test var for ingredients array
@@ -36,7 +37,7 @@ function handleFormSubmit(event) {
   //API call
   searchByIngredient(protein);
 
-save(checkboxEl);
+  save(checkboxEl);
 }
 
 var modalBody = $('.modal-body');
@@ -46,18 +47,18 @@ var modalBody = $('.modal-body');
 function save(event) {
   // uses DOM traversal to select the text content of the corresponding save button
   $.each(event, function () {
-      localStorage.setItem($(this).attr("value"), JSON.stringify($(this).prop('checked')));
-    }
-)
+    localStorage.setItem($(this).attr("value"), JSON.stringify($(this).prop('checked')));
+  }
+  )
 };
 
 function load(event) {
   // uses DOM traversal to select the text content of the corresponding save button
   $.each(event, function () {
-      var checkboxInput = JSON.parse(localStorage.getItem($(this).attr("value")));
-      $(this).prop('checked', checkboxInput);
-    }
-)
+    var checkboxInput = JSON.parse(localStorage.getItem($(this).attr("value")));
+    $(this).prop('checked', checkboxInput);
+  }
+  )
 };
 
 // Submit event on the form
@@ -90,8 +91,8 @@ async function getNutritionAPI(ingredient) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
-    if(result[0].calories){
-      acumulator += result[0].calories;
+    if (result[0].calories) {
+      calorieAcumulator += result[0].calories;
     }
   } catch (error) {
     console.error(error);
@@ -100,138 +101,143 @@ async function getNutritionAPI(ingredient) {
 }
 
 
-//function ParseRecipeDetailsIngredients(ingredients) {
+
   // manually setting ingredients to the array of ingredients from Recipe API
   //ingredients = ingredientsList;
 
-async function ParseRecipeDetailsIngredients(ingredients) {
+  async function ParseRecipeDetailsIngredients(ingredients) {
 
-  //updateList now has the ingredient array, ready to be manipulated
-  console.log(ingredients);
-  //Code for turning ¼ into something readable by nutrition api
+    //updateList now has the ingredient array, ready to be manipulated
+    console.log(ingredients);
+    //Code for turning ¼ into something readable by nutrition api
 
-  // const ingredients = [
-  //   '2  skinless, boneless chicken breast halves',
-  //   '1 (1.27 ounce) packet dry fajita seasoning, divided',
-  //   '1 tablespoon vegetable oil',
-  //   '1 (15 ounce) can black beans, rinsed and drained',
-  //   '1 (11 ounce) can Mexican-style corn',
-  //   '½ cup salsa',
-  //   '1 (10 ounce) package mixed salad greens',
-  //   '1  onion, chopped',
-  //   '1  tomato, cut into wedges'
-  // ];
-  
-  const updatedIngredients = ingredients.map(ingredient => {
-    // Regular expression to match different fractions (explicitly including spaces before and after)
-    const fractionRegex = /\s*\/|\d+\/\d+\s*/g;
-  
-    // Replace each matched fraction with its decimal equivalent
-    return ingredient.replace(fractionRegex, match => {
-      if (match === "/") {
-        return "0.5"; // Handle single slash as half
-      } else {
-        const [numerator, denominator] = match.trim().split("/"); // Trim spaces before splitting
-        return (Number(numerator) / Number(denominator)).toFixed(2); // Convert and round
-      }
+    // const ingredients = [
+    //   '2  skinless, boneless chicken breast halves',
+    //   '1 (1.27 ounce) packet dry fajita seasoning, divided',
+    //   '1 tablespoon vegetable oil',
+    //   '1 (15 ounce) can black beans, rinsed and drained',
+    //   '1 (11 ounce) can Mexican-style corn',
+    //   '½ cup salsa',
+    //   '1 (10 ounce) package mixed salad greens',
+    //   '1  onion, chopped',
+    //   '1  tomato, cut into wedges'
+    // ];
+
+    const updatedIngredients = ingredients.map(ingredient => {
+      // Regular expression to match different fractions (explicitly including spaces before and after)
+      const fractionRegex = /\s*\/|\d+\/\d+\s*/g;
+
+      // Replace each matched fraction with its decimal equivalent
+      return ingredient.replace(fractionRegex, match => {
+        if (match === "/") {
+          return "0.5"; // Handle single slash as half
+        } else {
+          const [numerator, denominator] = match.trim().split("/"); // Trim spaces before splitting
+          return (Number(numerator) / Number(denominator)).toFixed(2); // Convert and round
+        }
+      });
     });
-  });
-  
-  console.log(updatedIngredients);
 
-  
-  for(let i = 0; i < ingredients.length; i++){
-    await getNutritionAPI(updatedIngredients[i]);
-
-  }
-  console.log(acumulator);
-  // console.log(ingredients);
-}
-
-function searchByIngredient(ingredients) {
+    console.log(updatedIngredients);
 
 
-  var inclIngredientsQuery = ingredients.join(", ");
+    for (let i = 0; i < ingredients.length; i++) {
+      await getNutritionAPI(updatedIngredients[i]);
 
-  const settings = {
-    async: true,
-    crossDomain: true,
-    url: 'https://all-in-one-recipe-api.p.rapidapi.com/search',
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      'X-RapidAPI-Key': '8362023de3msh764288503d79e22p14e4a6jsn3b9cda46e2b0',
-      'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
-    },
-    processData: false,
-    data: '{\r\n    "ingredients": "' + inclIngredientsQuery + '"\r\n}'
-  };
-
-  $.ajax(settings).done(function (response) {
-    console.log(response.recipe.data.length)
-    var randomIndex = Math.floor(response.recipe.data.length * Math.random());
-    console.log(randomIndex)
-    console.log(response.recipe.data[randomIndex].id);
-    recipeDetails(response.recipe.data[randomIndex].id);
-  });
-};
-
-
-function recipeDetails(id) {
-  const settings = {
-    async: true,
-    crossDomain: true,
-    url: 'https://all-in-one-recipe-api.p.rapidapi.com/details/' + id,
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '8362023de3msh764288503d79e22p14e4a6jsn3b9cda46e2b0',
-      'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
     }
+    console.log(calorieAcumulator);
+    var calories = $('<h4>').text('Calories: ' + calorieAcumulator);
+    modalBody.append(calories);
+    // console.log(ingredients);
+    calorieAcumulator = 0;
   };
 
-  $.ajax(settings).done(function (response) {
-    ParseRecipeDetailsIngredients(response.recipe.data.Ingredients);
-    console.log(response.recipe.data.Name);
-    console.log(response.recipe.data.Description);
-    console.log(response.recipe.data.Directions);
-    // console.log(response.recipe.data.Ingredients);
-    console.log(response.recipe.data.Time);
 
-var recipeName = $('<h1>').text(response.recipe.data.Name);
-var recipeDesc = $('<h4>').text(response.recipe.data.Description);
-var recipeDir = $('<ul>');
-var recipeIng = $('<ul>');
-var recipeTime = $('<ul>');
-
-$.each(response.recipe.data.Directions, function(){
-  var getDirections = $('<li>').text(this);
-  recipeDir.append(getDirections);
-}
-);
-
-$.each(response.recipe.data.Ingredients, function(){
-  var getIngredients = $('<li>').text(this);
-  recipeIng.append(getIngredients);
-}
-);
-
-$.each(response.recipe.data.Time, function(){
-  var getTime = $('<li>').text(this);
-  recipeTime.append(getTime);
-}
-);
-
-modalBody.append(recipeName);
-modalBody.append(recipeDesc);
-modalBody.append(recipeDir);
-modalBody.append(recipeIng);
-modalBody.append(recipeTime);
+  function searchByIngredient(ingredients) {
 
 
+    var inclIngredientsQuery = ingredients.join(", ");
+
+    const settings = {
+      async: true,
+      crossDomain: true,
+      url: 'https://all-in-one-recipe-api.p.rapidapi.com/search',
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'X-RapidAPI-Key': '8362023de3msh764288503d79e22p14e4a6jsn3b9cda46e2b0',
+        'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
+      },
+      processData: false,
+      data: '{\r\n    "ingredients": "' + inclIngredientsQuery + '"\r\n}'
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response.recipe.data.length)
+      var randomIndex = Math.floor(response.recipe.data.length * Math.random());
+      console.log(randomIndex)
+      console.log(response.recipe.data[randomIndex].id);
+      recipeDetails(response.recipe.data[randomIndex].id);
+    });
+  };
 
 
-});
-};
+  function recipeDetails(id) {
+    const settings = {
+      async: true,
+      crossDomain: true,
+      url: 'https://all-in-one-recipe-api.p.rapidapi.com/details/' + id,
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '8362023de3msh764288503d79e22p14e4a6jsn3b9cda46e2b0',
+        'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
+      }
+    };
 
-load(checkboxEl);
+    $.ajax(settings).done(function (response) {
+      ParseRecipeDetailsIngredients(response.recipe.data.Ingredients);
+      console.log(response.recipe.data.Name);
+      console.log(response.recipe.data.Description);
+      console.log(response.recipe.data.Directions);
+      // console.log(response.recipe.data.Ingredients);
+      console.log(response.recipe.data.Time);
+
+      var recipeName = $('<h1>').text(response.recipe.data.Name);
+      var recipeDesc = $('<h4>').text(response.recipe.data.Description);
+      var recipeDir = $('<ul>');
+      var recipeIng = $('<ul>');
+      var recipeTime = $('<ul>');
+
+      $.each(response.recipe.data.Directions, function () {
+        var getDirections = $('<li>').text(this);
+        recipeDir.append(getDirections);
+      }
+      );
+
+      $.each(response.recipe.data.Ingredients, function () {
+        var getIngredients = $('<li>').text(this);
+        recipeIng.append(getIngredients);
+      }
+      );
+
+      $.each(response.recipe.data.Time, function () {
+        var getTime = $('<li>').text(this);
+        recipeTime.append(getTime);
+      }
+      );
+
+      modalBody.append(recipeName);
+      modalBody.append(recipeDesc);
+      modalBody.append(recipeDir);
+      modalBody.append(recipeIng);
+      modalBody.append(recipeTime);
+
+
+
+
+
+    });
+  };
+
+  load(checkboxEl);
 
