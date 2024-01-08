@@ -27,6 +27,12 @@ body{
 
 h1{
   color: darkslategray;
+  text-align: center;
+  margin: 10px;
+}
+
+h3{
+  text-align: center;
 }
 
 p{
@@ -71,8 +77,8 @@ label{
 }
 #top{
   display: block;
-  margin-left: 70px;
-  width: 75%;
+  margin: 0 auto;
+  width: 50%;
   height: 3px;
   background-color: brown;
 }
@@ -85,4 +91,36 @@ label{
 .checkbox {
   display: flex;
   justify-content: center;
+}
+
+.card-inline{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px;
+  
+}
+
+.card{
+  box-shadow: 3px 3px 3px darkslategray;
+  cursor: pointer;
+}
+
+.card:hover{
+  size: 50px;
+}
+
+.card-text{
+  display: flex;
+justify-content: center;
+  color: darkslategray;
+  text-align: center;
+}
+
+footer{
+  width: 100%;
+  height: 100%;
+  color: aliceblue;
+  text-align: center;
 }
