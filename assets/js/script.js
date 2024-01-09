@@ -123,7 +123,7 @@ function searchByIngredient(ingredients) {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
+      'X-RapidAPI-Key': 'b4b0019b9dmshd4af1eb6ee26458p139185jsn6473de9e6386',
       'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
     },
     processData: false,
@@ -147,7 +147,7 @@ function recipeDetails(id) {
     url: 'https://all-in-one-recipe-api.p.rapidapi.com/details/' + id,
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'fd4e7eb6e0mshcf9ac3dfb85202bp1cca0djsnca41d4a32995',
+      'X-RapidAPI-Key': 'b4b0019b9dmshd4af1eb6ee26458p139185jsn6473de9e6386',
       'X-RapidAPI-Host': 'all-in-one-recipe-api.p.rapidapi.com'
     }
   };
