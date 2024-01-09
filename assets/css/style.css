@@ -16,8 +16,6 @@ body {
 }
 
 .text {
-  border: 1px solid white;
-  background-color: aliceblue;
   padding: 25px;
   border-radius: 5px;
   color: darkslategray;
@@ -35,11 +33,13 @@ h1 {
 
 h3 {
   text-align: center;
+  font-size: 35px;
 }
 
 p {
   color: aliceblue;
   text-align: center;
+  font-size: 25px;
 }
 
 legend {
@@ -127,8 +127,6 @@ label {
   box-shadow: 3px 3px 3px darkslategray;
   cursor: pointer;
 }
-
-.card:hover {}
 
 .card-text {
   display: flex;
