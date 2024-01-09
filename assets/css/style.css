@@ -42,6 +42,15 @@ p {
   font-size: 25px;
 }
 
+.p-text{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 45px;
+  padding: 100px;
+  text-align: center;
+  font-size: 30px;
+}
+
 legend {
   font-weight: bold;
   margin-left: 20px;
@@ -108,8 +117,6 @@ label {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-
-  height: 100%;
 }
 
 .card-inline {
