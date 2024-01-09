@@ -3,11 +3,11 @@ input[type='checkbox'] {
   margin-right: 0.25rem;
 }
 
-body{
-  font-family: 'Macondo', cursive;
+body {
+  font-family: 'Sarabun', sans-serif;
 }
 
-#container{
+#container {
   border: 2px double orange;
   padding: 25px;
   border-radius: 5px;
@@ -15,7 +15,7 @@ body{
 
 }
 
-.text{
+.text {
   border: 1px solid white;
   background-color: aliceblue;
   padding: 25px;
@@ -25,17 +25,19 @@ body{
   text-shadow: 3px 3px 5px lightblue;
 }
 
-h1{
+h1 {
+  text-shadow: 1px 1px 5px grey;
+  font-size: 100px;
   color: darkslategray;
   text-align: center;
   margin: 10px;
 }
 
-h3{
+h3 {
   text-align: center;
 }
 
-p{
+p {
   color: aliceblue;
   text-align: center;
 }
@@ -52,7 +54,7 @@ ul {
   padding: 0;
 }
 
-label:hover{
+label:hover {
   cursor: pointer;
 }
 
@@ -67,58 +69,75 @@ li {
   padding: 0.125rem;
 }
 
-.title{
+.title {
   color: aliceblue;
 }
 
-label{
+label {
   margin: 0 auto;
   text-align: center;
 }
-#top{
+
+#top {
   display: block;
   margin: 0 auto;
   width: 50%;
   height: 3px;
   background-color: brown;
 }
-#bottom{
+
+#bottom {
   width: 100%;
   height: 5px;
   background-color: aliceblue;
 
 }
+
 .checkbox {
   display: flex;
   justify-content: center;
 }
 
-.card-inline{
+.card-container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 15px;
-  
 }
 
-.card{
+.body-type {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  height: 100%;
+}
+
+.card-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  margin: 45px;
+  margin-left: 100px;
+
+
+}
+
+.card {
   box-shadow: 3px 3px 3px darkslategray;
   cursor: pointer;
 }
 
-.card:hover{
-  size: 50px;
-}
+.card:hover {}
 
-.card-text{
+.card-text {
   display: flex;
-justify-content: center;
+  justify-content: center;
   color: darkslategray;
   text-align: center;
 }
 
-footer{
+footer {
   width: 100%;
   height: 100%;
   color: aliceblue;
